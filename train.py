@@ -13,7 +13,7 @@ import tensorflow as tf
 from config import (
     SAMPLE_RATE, DURATION, N_MFCC, MAX_LEN, HOP_LENGTH,
     DATA_DIR, MODEL_PATH, ENCODER_PATH, NORM_PATH,
-    TEST_SIZE, RANDOM_STATE, EPOCHS, BATCH_SIZE, EARLY_STOPPING_PATIENCE
+    TEST_SIZE, RANDOM_STATE, EPOCHS, BATCH_SIZE, EARLY_STOPPING_PATIENCE, WORDS
 )
 
 # ---------------------------------------------------------------------------
@@ -85,7 +85,7 @@ def load_files(data_dir: str, augment: bool = True):
 
     for label in sorted(os.listdir(data_dir)):
         label_dir = os.path.join(data_dir, label)
-        if not os.path.isdir(label_dir):
+        if not os.path.isdir(label_dir) or label not in WORDS:
             continue
 
         wav_files = [f for f in os.listdir(label_dir) if f.endswith(".wav")]

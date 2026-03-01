@@ -23,9 +23,6 @@ WORDS = [
     "dark",
     "exit",
     "lock",
-    "light",
-    "off",
-    "curtain",
     "noise",   # background noise class — always keep this
 ]
 
